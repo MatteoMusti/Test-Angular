@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <h1>Lista delle Attività</h1>
+    <table class="table">
+        <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Prezzo</th>
+        </tr>
+        <tr *ngFor="let activity of activities">
+            <td>{{ activity.activity }}</td>
+            <td>{{ activity.type }}</td>
+            <td>{{ activity.price }}</td>
+            <td>
+                <div>
+                    <button class="btn btn-primary" (click)="selectedActivity = activity">Dettagli</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button class="btn" routerLink="/search">Richiedi un'attività</button>
+    </div>
+</div>
+
+<ng-container>
+    <app-activity-details [activity]="selectedActivity"></app-activity-details>
+</ng-container>

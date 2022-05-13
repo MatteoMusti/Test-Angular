@@ -1,0 +1,26 @@
+    <div class="container mt-5">
+        <h1>Activity</h1>
+    
+        <form [formGroup]="activityForm" (submit)="onSubmit()">
+            <div class="from-group mt-3">
+                <label for="tipo" class="form-label">Tipo:</label>
+                <select formControlName="tipo" id="tipo" class="form-control">
+                    <option value="{{ type }}" *ngFor="let type of activityTypes">{{ type }}</option>
+                </select>
+            </div>
+            <div class="form-group mt-3">
+                <label for="partecipanti" class="form-label">Partecipanti:</label>
+                <input type="number" id="partecipanti" formControlName="partecipanti" class="form-control">
+            </div>
+            <div class="form-group mt-3">
+                <label for="prezzo" class="form-label">Prezzo:</label>
+                <input type="range" id="prezzo" formControlName="prezzo" class="form-range" min="0" max="1" step="0.05"> 
+            </div>
+            <button class="btn btn-primary" type="submit">Invia</button>
+        </form>
+    </div>
+
+
+<ng-container *ngIf="searchedActivities.length > 0">
+   <app-activities-list [activities]="searchedActivities"></app-activities-list> 
+</ng-container>
